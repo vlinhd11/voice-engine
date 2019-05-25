@@ -29,7 +29,8 @@ class Source(Element):
         self.pyaudio_instance = pyaudio.PyAudio()
 
         formats = [pyaudio.paInt8, pyaudio.paInt16, pyaudio.paInt24, pyaudio.paInt32]
-        width = formats[bits_per_sample / 8 - 1]
+        #list indices must be integers or slices, not float
+        width = formats[bits_per_sample // 8 - 1]
 
         # Search device by name
         if device_name:
